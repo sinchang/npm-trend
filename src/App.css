@@ -1,0 +1,62 @@
+body,
+html,
+#app,
+.container {
+  height: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.header {
+  padding-top: 20px;
+}
+
+.search-input {
+  position: relative;
+  display: block;
+  width: 30%;
+  margin: 30px auto;
+}
+
+.search-result {
+  position: absolute;
+  border: 1px solid #00d1b2;
+  border-top: none;
+  top: 36px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 999;
+}
+
+.search-result li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.search-result li:last-child {
+  border-bottom: none;
+}
+
+.wrapper {
+  height: calc(100% - 100px);
+}
+
+.footer {
+  height: 100px;
+  padding: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.chart {
+  width: 1000px;
+  margin: 20px auto;
+}
