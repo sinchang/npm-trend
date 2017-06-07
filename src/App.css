@@ -50,6 +50,7 @@ html,
 .footer {
   height: 100px;
   padding: 0;
+  background-color: #fff;
 }
 
 .hide {
