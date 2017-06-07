@@ -20,7 +20,8 @@ export default (state = {
       return {
         ...state,
         fetching: false,
-        error: action.payload.data
+        packages: [],
+        error: 'something error'
       }
     case FETCH_SUGGESTIONS_FULFILLED:
       return {

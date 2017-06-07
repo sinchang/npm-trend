@@ -20,7 +20,8 @@ export default (state = {
     case FETCH_PACKAGES_REJECTED:
       return {
         ...state,
-        error: action.payload.data
+        packages: [],
+        error: 'something error'
       }
     case FETCH_PACKAGES_FULFILLED:
       return {

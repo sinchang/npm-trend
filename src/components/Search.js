@@ -15,6 +15,14 @@ class Search extends Component {
     this.callAjax = debounce(this.callAjax, 1000)
   }
 
+  componentDidMount() {
+    document.addEventListener('click', () => {
+      this.setState({
+        isShow: false
+      })
+    })
+  }
+
   renderLists(packages) {
     if (packages.length) {
       return (
@@ -50,7 +58,12 @@ class Search extends Component {
     this.setState({
       isShow: true
     })
-    if (!keyword) return
+    if (!keyword) {
+      this.props.dispatch({
+        type: 'FETCH_SUGGESTIONS_REJECTED'
+      })
+      return
+    }
     this.props.dispatch(fetchSuggestions(keyword))
   }
 

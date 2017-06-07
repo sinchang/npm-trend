@@ -11,7 +11,7 @@ module.exports = {
   presets: [
     require('poi-preset-eslint-react')({ mode: '*' })
   ],
-  homepage: 'npm-trend',
+  homepage: '/npm-trend/',
   extendWebpack(config) {
     config.entry('client').prepend('react-hot-loader/patch')
   }
