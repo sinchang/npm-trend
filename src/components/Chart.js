@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import createG2 from 'g2-react'
 
@@ -30,9 +31,12 @@ class Chart extends Component {
   }
 }
 
+Chart.PropTypes = {
+  packages: PropTypes.array
+}
+
 function mapStateToProps(state) {
   return {
-    fetching: state.packages.fetching,
     packages: state.packages.packages
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-// import debounce from 'lodash.debounce'
+import PropTypes from 'prop-types'
+import debounce from 'lodash.debounce'
 import { connect } from 'react-redux'
 
 import { fetchSuggestions } from '../actions/suggestionsActions'
@@ -11,6 +12,7 @@ class Search extends Component {
     this.state = {
       isShow: true
     }
+    this.callAjax = debounce(this.callAjax, 1000)
   }
 
   renderLists(packages) {
@@ -19,7 +21,7 @@ class Search extends Component {
         <ul className={this.state.isShow ? 'search-result' : 'search-result hide'}>
           {
             packages.map((item, i) => {
-              return <li key={i} onClick={(e) => this.handleSubmit(e, item.package.name) }>{item.package.name}</li>
+              return <li key={i} onClick={(e) => this.handleSubmit(e, item.package.name)}>{item.package.name}</li>
             })
           }
         </ul>
@@ -27,13 +29,9 @@ class Search extends Component {
     }
   }
 
-  handleKeyup() {
-    const keyword = this.refs.search.value
-    this.setState({
-      isShow: true
-    })
-    if (!keyword) return
-    this.props.dispatch(fetchSuggestions(keyword))
+  handleKeyup(e) {
+    if (e.keyCode === 13) return
+    this.callAjax()
   }
 
   handleSubmit(e, keyword) {
@@ -44,7 +42,16 @@ class Search extends Component {
       isShow: false
     })
     if (!keyword) return
-    this.props.dispatch(fetchPackages('last-month', keyword))
+    this.props.dispatch(fetchPackages('last-month', keyword.toLowerCase()))
+  }
+
+  callAjax() {
+    const keyword = this.refs.search.value.toLowerCase()
+    this.setState({
+      isShow: true
+    })
+    if (!keyword) return
+    this.props.dispatch(fetchSuggestions(keyword))
   }
 
   render() {
@@ -52,12 +59,17 @@ class Search extends Component {
     return (
       <form className="field" onSubmit={(e) => this.handleSubmit(e)}>
         <div className={fetching ? 'control is-loading search-input' : 'control search-input'}>
-          <input className="input is-primary" type="text" placeholder="Enter an npm package" ref="search" onKeyUp={() => this.handleKeyup()} />
+          <input className="input is-primary" type="text" placeholder="Enter an npm package" ref="search" onKeyUp={(e) => this.handleKeyup(e)} />
           {this.renderLists(packages)}
         </div>
       </form>
     )
   }
+}
+
+Search.PropTypes = {
+  packages: PropTypes.array,
+  fetching: PropTypes.bool
 }
 
 function mapStateToProps(state) {
