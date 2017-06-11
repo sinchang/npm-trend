@@ -2,12 +2,6 @@
 
 > npm package download counts, a project to learn react-redux and redux.
 
-## Todo
-
-- [ ] share
-- [ ] multi packages compare
-- [ ] display package GitHub info
-
 ## Stack
 
 - react

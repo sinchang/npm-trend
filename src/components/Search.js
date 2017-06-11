@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { fetchSuggestions } from '../actions/suggestionsActions'
 import { fetchPackages } from '../actions/packagesActions'
+import { getTime } from '../helper'
 
 class Search extends Component {
   constructor(props) {
@@ -50,7 +51,12 @@ class Search extends Component {
       isShow: false
     })
     if (!keyword) return
-    this.props.dispatch(fetchPackages('last-month', keyword.toLowerCase()))
+    const time = getTime(1)
+    this.props.dispatch({
+      type: 'UPDATE_TIME',
+      payload: 1
+    })
+    this.props.dispatch(fetchPackages(time, keyword.toLowerCase()))
   }
 
   callAjax() {
@@ -80,7 +86,7 @@ class Search extends Component {
   }
 }
 
-Search.PropTypes = {
+Search.propTypes = {
   packages: PropTypes.array,
   fetching: PropTypes.bool
 }
