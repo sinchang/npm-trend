@@ -79,17 +79,6 @@ describe('packages reducer', () => {
     })
   })
 
-  it('should handle FETCH_PACKAGES_PENDING', () => {
-    expect(
-      reducer(defaultState, {
-        type: FETCH_PACKAGES_PENDING
-      })
-    ).toEqual({
-      ...defaultState,
-      fetching: true
-    })
-  })
-
   it('should handle FETCH_PACKAGES_REJECTED', () => {
     expect(
       reducer(defaultState, {

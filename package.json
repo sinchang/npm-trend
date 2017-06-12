@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "poi",
     "test": "react-jest --env=jsdom",
+    "test:watch": "react-jest --env=jsdom --watch",
     "build": "poi build"
   },
   "author": "sinchang <sinchang@foxmail.com>",
