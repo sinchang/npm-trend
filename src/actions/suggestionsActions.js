@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const fetchSuggestions = (keyword) => {
+export const fetchSuggestions = keyword => {
   return dispatch => {
     dispatch({
       type: 'FETCH_SUGGESTIONS',

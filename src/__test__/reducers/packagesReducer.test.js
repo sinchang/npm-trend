@@ -46,36 +46,30 @@ describe('packages reducer', () => {
   })
 
   it('should handle FETCH_PACKAGES_FULFILLED', () => {
+    const downloads = [
+      {
+        day: '2017-05-12',
+        downloads: 1
+      }, {
+        day: '2017-05-11',
+        downloads: 2
+      }
+    ]
+
     expect(
       reducer(defaultState, {
         type: FETCH_PACKAGES_FULFILLED,
         payload: {
           data: {
             package: 'vue',
-            downloads: [
-              {
-                day: '2017-05-12',
-                downloads: 1
-              }, {
-                day: '2017-05-11',
-                downloads: 2
-              }
-            ]
+            downloads
           }
         }
       })
     ).toEqual({
       ...defaultState,
       keyword: 'vue',
-      packages: [
-        {
-          day: '2017-05-12',
-          downloads: 1
-        }, {
-          day: '2017-05-11',
-          downloads: 2
-        }
-      ]
+      packages: downloads
     })
   })
 
