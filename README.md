@@ -1,4 +1,4 @@
-# npm-trend [![Build Status](https://travis-ci.org/sinchang/npm-trend.svg?branch=master)](https://travis-ci.org/sinchang/npm-trend)
+# npm-trend
 
 > npm package download counts, a project to learn react-redux and redux.
 
