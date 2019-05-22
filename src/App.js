@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import { hot } from 'react-hot-loader'
 
 import Title from './components/Title'
 import Footer from './components/Footer'
@@ -21,4 +22,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default hot(module)(App)
